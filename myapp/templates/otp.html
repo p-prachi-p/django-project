@@ -1,0 +1,71 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>    
+  </head>
+  <body>
+          
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="margin-top: -30px;margin-bottom: -30px;">
+                    <div class="product-bit-title text-center">
+                        <h2>Enter OTP</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>        
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">                
+                <div class="col-md-12">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            {% if msg %}
+                                <b style="color: red;">{{msg}}</b>
+                            {% endif %}    
+                            <form enctype="multipart/form-data" action="{% url 'verify_otp' %}" class="checkout" method="post" name="otp">
+                                {% csrf_token %}
+                                <div id="customer_details" class="col2-set">
+                                    <div class="col-1">
+                                        <div class="woocommerce-billing-fields">
+                                            <h3>Enter OTP</h3>
+                                            <p>
+                                               <input type="hidden" name="otp" value="{{otp}}">
+                                               <input type="hidden" name="email" value="{{email}}">
+
+                                            </p>
+
+                                            <p>
+                                                <label class="" for="billing_phone">Enter OTP <abbr title="required" class="required">*</abbr>
+                                                </label>
+                                                <input type="password"  placeholder="Password" id="mobile" name="uotp" class="input-text ">
+                                            </p>
+                                            
+                                            <p>
+                                                <input type="submit" name="action" value="Verify OTP" class="input-submit">
+
+                                            </p>
+                                            <div class="clear"></div>                                                
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                        </div>                       
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </body>
+</html>
+{% endblock %}
